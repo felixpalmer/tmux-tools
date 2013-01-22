@@ -1,0 +1,4 @@
+Collection of useful snippets & config for tmux
+
+- .tmux.conf tmux configuration file
+- ssh-all utility to ssh to multiple boxes at the same time (using tmux) while synchronizing the input into each box
