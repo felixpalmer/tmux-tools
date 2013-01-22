@@ -1,0 +1,14 @@
+#/bin/sh
+# ssh-everywhere.sh
+tmux new-session -d -s cluster
+for i in "$@"
+do
+    echo "Connecting to $i..."
+    tmux splitw -t cluster "ssh $i"
+    tmux select-layout -t cluster tiled
+done
+tmux set-window-option -t cluster synchronize-panes on
+# Need to get rid of original non-ssh'd pane
+tmux kill-pane -t 0
+tmux select-layout -t cluster tiled
+tmux -2 attach-session -t cluster
